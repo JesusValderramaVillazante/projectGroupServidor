@@ -1,6 +1,4 @@
 <?php
-use \Psr\Http\Message\ServerRequestInterface as Request;
-use \Psr\Http\Message\ResponseInterface as Response;
 use \Slim\Views\PhpRenderer as View;
 use \Slim\App as App;
 
@@ -26,6 +24,7 @@ require __DIR__ . '/../src/dependencies/dependencies.php';
 // Register routes
 require __DIR__ . '/../src/rutas/home.php';
 require __DIR__ . '/../src/rutas/auth_route.php';
+require __DIR__ . '/../src/rutas/nuevoUsuario_route.php';
 
 $app->run();
 

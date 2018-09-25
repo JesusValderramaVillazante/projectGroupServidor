@@ -8,7 +8,8 @@
     "autoload": {
         "psr-4": {
             "Src\\Modelo\\": "src/modelo/",
-            "Src\\Lib\\": "src/lib/"
+            "Src\\Lib\\": "src/lib/",
+            "Src\\Validation\\": "src/validation/"
         }  
     }
 }
