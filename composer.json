@@ -1,0 +1,14 @@
+{
+    "require": {
+        "slim/slim": "^3.0",
+        "slim/php-view": "^2.2",
+        "lichtner/fluentpdo": "^1.1",
+        "firebase/php-jwt": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\Modelo\\": "src/modelo/",
+            "Src\\Lib\\": "src/lib/"
+        }  
+    }
+}
