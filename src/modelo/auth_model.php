@@ -15,8 +15,8 @@ class AuthModel{
 
     public function autenticar($correo, $password){
         $usuario = $this->db->from($this->table)
-        ->where('Correo', $correo)
-        ->where('Password', $password)
+        ->where('email', $correo)
+        ->where('password', md5($password))
         ->fetch();
         
         if (is_object($usuario)) {
@@ -26,7 +26,7 @@ class AuthModel{
                 'id' => $usuario->id,
                 'Nombre' => $nombre,
                 'NombreCompleto' => $usuario->nombre,
-                'EsAdmin' => (bool)$usuario->EsAdmin
+                'EsAdmin' => (bool)$usuario->esAdmin
             ]);
 
             $this->response->result = $token;

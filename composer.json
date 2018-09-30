@@ -9,7 +9,8 @@
         "psr-4": {
             "Src\\Modelo\\": "src/modelo/",
             "Src\\Lib\\": "src/lib/",
-            "Src\\Validation\\": "src/validation/"
+            "Src\\Validation\\": "src/validation/",
+            "Src\\Middleware\\": "src/middleware/"
         }  
     }
 }

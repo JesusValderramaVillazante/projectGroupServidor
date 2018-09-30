@@ -25,6 +25,7 @@ require __DIR__ . '/../src/dependencies/dependencies.php';
 require __DIR__ . '/../src/rutas/home.php';
 require __DIR__ . '/../src/rutas/auth_route.php';
 require __DIR__ . '/../src/rutas/nuevoUsuario_route.php';
+require __DIR__ . '/../src/rutas/usuario_route.php';
 
 $app->run();
 

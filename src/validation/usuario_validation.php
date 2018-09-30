@@ -7,49 +7,48 @@ class UsuarioValidation{
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
+        
         return $data;
     }
     
-    public static function validate($data, $update = false){
+    public static function validate($data, $update = false , $existencia = false){
         $response = new Response();
-        
+    
         $key = 'nombre';
         if ( !$update ) {
-            if( empty( self::test_input($data[$key]) )){
+            if( empty( $data[$key] )){
                 $response->errors[$key][] = 'Este campor es obligatorio';
             }else{
-                $value = self::test_input($data[$key]);
+                $value = $data[$key];
 
-                if(strlen($value) < 4){
-                    $response->errors[$key][] = 'Debe contener como monimo 4 caracteres';
+                if(strlen(self::test_input($value)) < 4 || strlen(self::test_input($value)) > 15){
+                    $response->errors[$key][] = 'Debe contener como minimo 4 caracteres y maximo 15 caracteres';
                 }
             }
         }else{
-            if (!empty(self::test_input($data[$key]))) {
-                $value = self::test_input($data[$key]);
-
-                if( strlen($value) < 4 ){
-                    $response->errors[$key][] = 'Debe contener como monimo 4 caracteres';
+            if (array_key_exists($key, $data)) {
+                $value = $data[$key];
+                if( strlen(self::test_input($value)) < 4 || strlen(self::test_input($value)) > 15){
+                    $response->errors[$key][] = 'Debe contener como minimo 4 caracteres y maximo 15 caracteres';
                 }
             }
         }
 
         $key = 'email';
         if ( !$update ) {
-            if(empty( self::test_input($data[$key]) )){
+            if( empty( $data[$key] )){
                 $response->errors[$key][] = 'Este campo es obligatorio';
             }else{
-                $value = self::test_input($data[$key]);
+                $value = $data[$key];
 
-                if( !filter_var($value, FILTER_VALIDATE_EMAIL) ){
+                if( !filter_var($value, FILTER_VALIDATE_EMAIL) || strlen(self::test_input($value)) > 40 || strlen(self::test_input($value)) < 4){
                     $response->errors[$key][] = 'Valor ingresado no es un correo valido';
                 }
             }
         }else{
-            if (!empty(self::test_input($data[$key]))) {
-                $value = self::test_input($data[$key]);
-
-                if( !filter_var($value, FILTER_VALIDATE_EMAIL) ){
+            if (array_key_exists($key, $data)) {
+                $value = $data[$key];
+                if( !filter_var($value, FILTER_VALIDATE_EMAIL) || strlen(self::test_input($value)) > 40 || strlen(self::test_input($value)) < 4){
                     $response->errors[$key][] = 'Valor ingresado no es un correo valido';
                 }
             }
@@ -57,25 +56,32 @@ class UsuarioValidation{
 
         $key = 'password';
         if ( !$update ) {
-            if (empty( self::test_input($data[$key]) )) {
+            if (empty( $data[$key] )) {
                 $response->errors[$key][] = 'Este campo es obligatorio';
             }else{
-                $value = self::test_input($data[$key]);
+                $value = $data[$key];
 
-                if (strlen($value) < 4) {
-                    $response->errors[$key][] = 'Debe contener como minimo 4 caracteres';
+                if (strlen(self::test_input($value)) < 4 || strlen(self::test_input($value)) > 15) {
+                    $response->errors[$key][] = 'Debe contener como minimo 4 caracteres y maximo 15 caracteres';
                 }
             }
         }else{
-            if (!empty(self::test_input($data[$key]))) {
-                $value = self::test_input($data[$key]);
+            
+            if (array_key_exists($key, $data)) {
+                $value = $data[$key];
 
-                if(strlen($value) < 4){
-                    $response->errors[$key][] = 'Debe contener como minimo 4 caracteres';
+                if(strlen(self::test_input($value)) < 4 || strlen(self::test_input($value)) > 15){
+                    $response->errors[$key][] = 'Debe contener como minimo 4 caracteres y maximo 15 caracteres';
                 }
             }
         }
         
+        $key = 'email';
+        if($existencia){
+            $response->errors[$key][] = 'ya existe';
+        }
+
+
         $response->SetResponse(count($response->errors) === 0);
 
         return $response;
