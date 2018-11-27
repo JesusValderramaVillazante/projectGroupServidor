@@ -13,7 +13,18 @@ class Usuario{
     }
 
     public function obtener($id){
-        $this->response->result = $this->db->from($this->table, $id)->fetch();
+        $this->response->result = $this->db->from($this->table, $id)
+                                            ->select(null)
+                                            ->select([
+                                                'nombre', 
+                                                'email', 
+                                                'id', 
+                                                'fotoUrl', 
+                                                'esAdmin',
+                                                'fechaNacimiento',
+                                                'genero',
+                                                'numeroMovil'
+                                                ])->fetch();
         return $this->response->SetResponse(true); ;
     }
 
@@ -26,4 +37,9 @@ class Usuario{
         
         return $this->response->SetResponse(true);
     }
+
+    public function guardarFoto($id, $fotoUrl){
+        $this->db->update($this->table, ['fotoUrl'=>$fotoUrl], $id)->execute();
+        return $this->response->SetResponse(true);
+    } 
 }

@@ -21,15 +21,15 @@ class UsuarioValidation{
             }else{
                 $value = $data[$key];
 
-                if(strlen(self::test_input($value)) < 4 || strlen(self::test_input($value)) > 15){
-                    $response->errors[$key][] = 'Debe contener como minimo 4 caracteres y maximo 15 caracteres';
+                if(strlen(self::test_input($value)) < 2 || strlen(self::test_input($value)) > 30){
+                    $response->errors[$key][] = 'Debe contener como minimo 2 caracteres y maximo 30 caracteres';
                 }
             }
         }else{
             if (array_key_exists($key, $data)) {
                 $value = $data[$key];
-                if( strlen(self::test_input($value)) < 4 || strlen(self::test_input($value)) > 15){
-                    $response->errors[$key][] = 'Debe contener como minimo 4 caracteres y maximo 15 caracteres';
+                if( strlen(self::test_input($value)) < 2 || strlen(self::test_input($value)) > 30){
+                    $response->errors[$key][] = 'Debe contener como minimo 2 caracteres y maximo 30 caracteres';
                 }
             }
         }
@@ -41,14 +41,14 @@ class UsuarioValidation{
             }else{
                 $value = $data[$key];
 
-                if( !filter_var($value, FILTER_VALIDATE_EMAIL) || strlen(self::test_input($value)) > 40 || strlen(self::test_input($value)) < 4){
+                if( !filter_var($value, FILTER_VALIDATE_EMAIL) || strlen(self::test_input($value)) > 40 || strlen(self::test_input($value)) < 2){
                     $response->errors[$key][] = 'Valor ingresado no es un correo valido';
                 }
             }
         }else{
             if (array_key_exists($key, $data)) {
                 $value = $data[$key];
-                if( !filter_var($value, FILTER_VALIDATE_EMAIL) || strlen(self::test_input($value)) > 40 || strlen(self::test_input($value)) < 4){
+                if( !filter_var($value, FILTER_VALIDATE_EMAIL) || strlen(self::test_input($value)) > 40 || strlen(self::test_input($value)) < 2){
                     $response->errors[$key][] = 'Valor ingresado no es un correo valido';
                 }
             }
@@ -61,8 +61,8 @@ class UsuarioValidation{
             }else{
                 $value = $data[$key];
 
-                if (strlen(self::test_input($value)) < 4 || strlen(self::test_input($value)) > 15) {
-                    $response->errors[$key][] = 'Debe contener como minimo 4 caracteres y maximo 15 caracteres';
+                if (strlen(self::test_input($value)) < 2 || strlen(self::test_input($value)) > 40) {
+                    $response->errors[$key][] = 'Debe contener como minimo 2 caracteres y maximo 40 caracteres';
                 }
             }
         }else{
@@ -70,8 +70,8 @@ class UsuarioValidation{
             if (array_key_exists($key, $data)) {
                 $value = $data[$key];
 
-                if(strlen(self::test_input($value)) < 4 || strlen(self::test_input($value)) > 15){
-                    $response->errors[$key][] = 'Debe contener como minimo 4 caracteres y maximo 15 caracteres';
+                if(strlen(self::test_input($value)) < 2 || strlen(self::test_input($value)) > 40){
+                    $response->errors[$key][] = 'Debe contener como minimo 2 caracteres y maximo 40 caracteres';
                 }
             }
         }

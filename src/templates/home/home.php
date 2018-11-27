@@ -8,6 +8,6 @@
 </head>
 <body>
     <H1>home</H1>
-    <script src="/js/app.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

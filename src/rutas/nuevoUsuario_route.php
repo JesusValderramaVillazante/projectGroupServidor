@@ -6,7 +6,7 @@ use Src\Validation\UsuarioValidation;
 $app->post('/usuario/nuevo', function(Request $request, Response $response){
     $existCorreo;
     
-    if(array_key_exists('email', $request->getParsedBody())){
+    if( array_key_exists('email', $request->getParsedBody()) ){
         $query = $this->model->nuevoUsuario->findCorreo( $request->getParsedBody() );
         $existCorreo = count($query);
     }else{

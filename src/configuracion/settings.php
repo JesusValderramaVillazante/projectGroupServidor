@@ -15,6 +15,8 @@ return [
             'dns' => 'mysql:host=localhost;port=8889;dbname=proyecto',
             'user' => 'root',
             'pass' => 'root'
-        ]
+        ],
+
+        'rutaUpload' => $_SERVER['DOCUMENT_ROOT'].'/uploads/'
     ],
 ];
