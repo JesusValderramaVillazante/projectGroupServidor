@@ -11,6 +11,18 @@ $app->group('/usuario/', function(){
         return $response->withJson( $this->model->usuario->obtener( $id ), 200 );
     });
 
+    $this->get('participa/{idEvento}', function(Request $request, Response $response, $args){
+        $idUsuario = $request->getAttribute('id');  
+        $idEvento = $args["idEvento"];
+        return $response->withJson( $this->model->usuario->eventoApuntado( $idUsuario, $idEvento ), 200 );
+    });
+
+    $this->get('organiza/{idEvento}', function(Request $request, Response $response, $args){
+        $idUsuario = $request->getAttribute('id');  
+        $idEvento = $args["idEvento"];
+        return $response->withJson( $this->model->usuario->eventoOrganiza( $idUsuario, $idEvento ), 200 );
+    });
+
     $this->put('actualizar', function(Request $request, Response $response){
         $id = $request->getAttribute('id');
         $r = UsuarioValidation::validate($request->getParsedBody(), true);
@@ -36,4 +48,11 @@ $app->group('/usuario/', function(){
      
         return $response->withJson( $this->model->usuario->guardarFoto( $id,  $rutaBd), 200 );
     });
+
+    $this->delete('eliminar', function(Request $request, Response $response){
+        $idUsuario = $request->getAttribute('id'); 
+        $resp = $this->model->usuario->eliminar($idUsuario);
+        return $response->withJson($resp, 200);
+    });
+
 })->add(new AuthMiddleware($app));

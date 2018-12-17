@@ -27,6 +27,8 @@ $container['model'] = function($c){
     return (object)[
         'auth' => new Src\Modelo\AuthModel($c->db),
         'nuevoUsuario' => new Src\Modelo\NuevoUsuario($c->db),
-        'usuario' => new Src\Modelo\Usuario($c->db)
+        'usuario' => new Src\Modelo\Usuario($c->db),
+        'evento' => new Src\Modelo\Evento($c->db),
+        'admin' => new Src\Modelo\Admin($c->db)
     ];
 };

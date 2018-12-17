@@ -1,6 +1,12 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, app-token, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+$method = $_SERVER['REQUEST_METHOD'];
+if($method == "OPTIONS") {
+    die();
+}
 
 use \Slim\Views\PhpRenderer as View;
 use \Slim\App as App;
@@ -29,6 +35,8 @@ require __DIR__ . '/../src/rutas/home.php';
 require __DIR__ . '/../src/rutas/auth_route.php';
 require __DIR__ . '/../src/rutas/nuevoUsuario_route.php';
 require __DIR__ . '/../src/rutas/usuario_route.php';
+require __DIR__ . '/../src/rutas/evento_route.php';
+require __DIR__ . '/../src/rutas/admin_route.php';
 
 $app->run();
 

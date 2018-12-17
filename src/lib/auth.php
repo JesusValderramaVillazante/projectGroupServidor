@@ -7,7 +7,7 @@ class Auth{
     private static $secret_key = 'ervsdfgr';
     private static $encrypt = array('HS256');
     private static $aud = null;
-    private static $minutes = 60;
+    private static $minutes = 120;
 
     public static function SignIn( $data ){
         $time = time();

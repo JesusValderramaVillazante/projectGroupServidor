@@ -22,16 +22,13 @@ class AuthMiddleware
         if (isset($token[0])) {
             $token = $token[0];
         }
-
         try {
             Auth::Check($token);  
             $request = $request->withAttribute("id", Auth::GetData($token)->id);
+            $request = $request->withAttribute("isAdmin", Auth::GetData($token)->EsAdmin);
         } catch (Exception $e) {
             return $response->withStatus(401)->write('Unauthorized');
-        }
-
-        
+        }        
         return $next($request, $response);
-
     }
 }
